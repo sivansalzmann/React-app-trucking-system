@@ -1,0 +1,66 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.truckings-container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 1258px;
+    height: 800px;
+    background-image: url("scene.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+}
+
+.trucking-list {
+    width:550px;
+    height: 594px;
+    background-color: white;
+    margin-left: 183px;
+    margin-top:113px;
+}
+
+.trucking-form {
+    margin-top: 116px;
+    margin-left: 38px;
+}
+
+.input-form {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 14px;
+    width: 400px;
+    height: 60px;
+
+}
+
+.buttton-form {
+    width: 158px;
+    height: 60px;
+    margin-left: 153px;
+}
+
+ol {
+    margin-top: 22px;
+}
+ol li {
+    display: inline;
+    margin-left: 30px;
+    font-family: "Rubik", sans-serif;
+    line-height: 40px;
+    font-size: 18px;
+}
+
+.delete-update {
+    width: 36px;
+    height: 36px;
+}
+/* .car-pic {
+    background-image: url('truck.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+} */
