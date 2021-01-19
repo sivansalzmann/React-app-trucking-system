@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-import TruckingList from "./TruckingList";
-import Trucking from "./Trucking";
-import TruckingData from "../Data/TruckingData.json"
-// import style from "./style/style.css";
-// import Background from './Background';
-import background from './style/media/scene.png'
+import React, { Component } from "react";
+import backgroundImage from '../media/scene.png';
+import TruckingList from './TruckingList';
+import TruckingFormAdd from './TruckingFormAdd';
+import Truck from './Truck';
+import TruckingContainer from "./TruckingContainer";
 
-const divBackground = {
-    backgroundImage: `url(${background})`,
-    backgroundRepeat  : 'no-repeat',
-    width: '100%',
-    height:'800px',
-    position:'relative',
-} 
+class TruckingService extends Component {
 
-const TruckingService = () => {
-    
+  render() {
     return (
-        <div style={divBackground}>
-            {/* < Background /> */}
-            < TruckingList TruckingData = {TruckingData}/>
-            < Trucking />
-        </div>
-    )
+      <div>
+        <img src={backgroundImage} alt="backgroundImage" style={{ marginLeft:"323px" ,width:1285, height:800}}/>
+        <TruckingContainer/>
+        <Truck/>
+      </div>
+    );
+  }
 }
 
-export default TruckingService
+export default TruckingService;

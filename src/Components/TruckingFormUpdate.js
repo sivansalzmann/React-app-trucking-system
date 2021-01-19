@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button } from '@material-ui/core';
 
-class TruckingForm extends Component{
+class TruckingFormUpdate extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -68,21 +68,6 @@ class TruckingForm extends Component{
         }
     }
 
-    submitBtn() {
-        if (this.props.editing === true)
-            return (<p>Update</p>)
-        else
-            return (<p>Save</p>)
-    }
-    form={
-        display: "flex",
-        flexFlow: "column",
-        marginBottom: "14px",
-        width: "400px",
-        height: "60px",
-        border: "2px solid #EE4D47",
-        borderRadius: "5px"
-    };
     butttonForm={
         width: "158px",
         height: "60px",
@@ -95,19 +80,25 @@ class TruckingForm extends Component{
         width: "400px",
         height: "60px",
         border: "2px solid #EE4D47",
-        borderRadius: "5px"
+        borderRadius: "5px",
     };
+    submitBtn() {
+        if (this.props.editing === true)
+            return (<p>Update</p>)
+        else
+            return (<p>Save</p>)
+    }
 
     render() {
         return (
-                <div style={this.form}>
+                <div>
                     <input style={this.inputForm} type={'date'} name={'date'} placeholder={'Date'} value={this.state.date} onChange={this.inputChanged}/>
                     <input style={this.inputForm} type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.inputChanged}/>
-                    <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.inputChanged}/>
+                    <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.inputChanged}/>  
                     <Button type="submit" style={this.butttonForm} variant="contained" color="secondary" id={'submit'}  onClick={this.save}>{this.submitBtn()}</Button>
                 </div>
             )
         }
 }
 
-export default TruckingForm
+export default TruckingFormUpdate

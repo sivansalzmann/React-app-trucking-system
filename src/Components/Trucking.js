@@ -13,17 +13,22 @@ const Trucking = (props) => {
         props.onDelete(props.index)
     }
     return (
-        <div className="trucking">
+        <tr style={{
+                fontFamily: "Rubik, sans-serif",
+                lineHeight: "40px",
+                fontSize: "18px",
+                color: "#402B2B"
+            }}>
             {props.children}
-            <div className={"delete-update"}>
-                <Fab size="small" className={"but"} aria-label="edit" color="secondary" onClick={editTrucking}>
+            <td>
+                <Fab size="small" className={"but"} aria-label="edit" color="secondary" onClick={editTrucking} style={{marginRight: "11px"}}>
                     <EditIcon />
                 </Fab>
-                <Fab size="small" className={"but"} aria-label="delete" color="secondary" onClick={deleteTrucking}>
+                <Fab size="small" className={"but"} aria-label="delete" color="secondary" onClick={deleteTrucking} style={{marginRight: "12px"}}>
                     <DeleteIcon />
                 </Fab>
-            </div>
-        </div>
+            </td>
+        </tr>
     )
 }
 

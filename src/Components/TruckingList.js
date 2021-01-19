@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Trucking from "./Trucking";
-import TruckingForm from "./TruckingForm";
+import TruckingFormUpdate from "./TruckingFormUpdate";
 import Truckings from "../Data/TruckingData.json";
 
 class TruckingList extends Component {
@@ -85,6 +85,9 @@ class TruckingList extends Component {
         let max = truckings.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id, 0);
         return ++max;
     }
+    styleTruck = {
+        marginLeft:"10px"
+    };
 
     eachTrucking(item, index) {
         return (
@@ -96,19 +99,29 @@ class TruckingList extends Component {
             </Trucking>
         )
     }
+
     render() {
         return(
-            <div style={{
-                width:"550px",
-                height: "594px",
-                backgroundColor: "white",
-                marginLeft: "183px",
-                marginTop: "113px",
-                borderRadius: "10px"
+            <div>
+                <div style={{
+                    width: "550px",
+                    height: "594px",
+                    position: "absolute",
+                    marginLeft: "183px",
+                    top: '113px',
+                    left: '334px',
+                    background:'white',
+                    boxShadow: '0px 20px 40px rgba(238, 77, 71, 0.1)',
+                    borderRadius: '10px'
             }}>
-                { this.state.truckings.map(this.eachTrucking) }
-                <TruckingForm formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
-
+                <table className="delivery-table" style={{marginLeft: "24px", marginTop: "22px", width: "100%"}}>
+                    <tbody>
+                        { this.state.truckings.map(this.eachTrucking) }
+                    </tbody>
+                </table>
+            </div>
+             
+                    <TruckingFormUpdate formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
             </div>
         )
     }

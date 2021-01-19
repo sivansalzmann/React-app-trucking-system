@@ -1,12 +1,12 @@
 import React from 'react';
-import truck from './style/media/truck.png';
+import truck from '../media/truck.png';
 
 const truckStyles = {
-    paddingTop:'24%',
+    backgroundImage: `url${truck}`,
+    top: '746px',
     position:'absolute',
-    left:'740px',
-    bottom:'185px'
-}
+    left: '0px'
+};
 
 const Truck = () =>{
         return(
