@@ -1,81 +1,113 @@
-import React, { Component } from 'react';
-import Trucking from './Trucking';
-import TruckingData from './../Data/TruckingData.json';
-import style from './style/style.css'
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import { Fab } from '@material-ui/core';
+import React, {Component} from 'react';
+import Trucking from "./Trucking";
+import TruckingForm from "./TruckingForm";
+import Truckings from "../Data/TruckingData.json";
 
 class TruckingList extends Component {
     constructor(props) {
-        super(props);
-
+        super(props)
         this.state = {
-            truckings : [
-                
-            ]
+            truckings: [],
+            formInputs: {
+                id: null,
+                name: 'Name',
+                date: '',
+                city: 'City'
+            },
+            editing: false
         }
-        this.eachTrucking = this.eachTrucking.bind(this);
-        this.edit = this.edit.bind(this);
-        this.delete = this.delete.bind(this);
-        this.add = this.add.bind(this);
-        this.nextId = this.nextId.bind(this);
+
+        this.eachTrucking = this.eachTrucking.bind(this)
+        this.update = this.update.bind(this)
+        this.delete = this.delete.bind(this)
+        this.add = this.add.bind(this)
+        this.nextId = this.nextId.bind(this)
+        this.fillInput = this.fillInput.bind(this)
     }
 
     componentDidMount() {
-        TruckingData.map(trucking => this.add({id: trucking.id,_date: trucking.date, _name: trucking.name, _city: trucking.city}));
+        Truckings.map(item => this.add({
+            id: item.id,
+            name: item.name,
+            date: item.date,
+            city: item.city
+        }))
     }
 
-    edit(newTrucking, i) {
-        console.log(`Edit ${i}: newTrucking: ${newTrucking}`);
+    fillInput(index) {
+        this.setState(prevState => ({
+            editing: true,
+            formInputs: {
+                id: prevState.truckings[index]["id"],
+                name: prevState.truckings[index]["name"],
+                city: prevState.truckings[index]["city"],
+                date: prevState.truckings[index]["date"]
+            }
+        }))
+    }
 
-        this.setState(prevState =>({
-            truckings: prevState.truckings.map(
-                trucking => trucking.id !== i ? trucking : {...trucking, trucking:newTrucking}
-            )
-        }));
-
+    update(newTrucking, id) {
+        this.setState(prevState => ({
+                editing: false,
+                truckings: prevState.truckings.map(
+                    trucking => {
+                        if (trucking.id === id) {
+                            trucking.name = newTrucking.name
+                            trucking.city = newTrucking.city
+                            trucking.date = newTrucking.date
+                        }
+                        return trucking
+                    }
+                )
+            }
+        ))
     }
 
     delete(id) {
         this.setState(prevState => ({
-            truckings: prevState.truckings.filter(trucking => trucking.id !== id)
+            truckings: prevState.truckings.filter((trucking, i) => i !== id)
         }))
     }
 
-    eachTrucking(item, i) {
-        return <Trucking key={i} index={item.id} onChange={this.edit} onDelete={this.delete}>
-                    <ol>
-                        <li>{item.date}</li>
-                        <li>{item.name}</li>
-                        <li>{item.city}</li>
-                    </ol>
-                </Trucking>
-    }
-
-    add( {id = null, _date = 'date', _name = 'name', _city = 'city'}) {
+    add(newTrucking) {
         this.setState(prevState => ({
             truckings: [
                 ...prevState.truckings, {
-                    id: id !== null ? id : this.nextId(prevState.truckings),
-                    date: _date,
-                    name: _name,
-                    city: _city
-                }
-            ]
+                    id: newTrucking.id !== null ? newTrucking.id : this.nextId(prevState.truckings),
+                    name: newTrucking.name,
+                    date: newTrucking.date,
+                    city: newTrucking.city
+                }]
         }))
     }
 
     nextId(truckings = []) {
-        let max = truckings.reduce((prev,curr) => prev.id > curr.id ? prev.id : curr.id , 0);
+        let max = truckings.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id, 0);
         return ++max;
     }
 
+    eachTrucking(item, index) {
+        return (
+            <Trucking key={item.id} index={index} onChange={this.fillInput} onDelete={this.delete}>
+                <td> {index + 1} </td>
+                <td> {item.name} </td>
+                <td> {item.city} </td>
+                <td> {item.date} </td>
+            </Trucking>
+        )
+    }
     render() {
         return(
-            <div className={"trucking-list"}>
+            <div style={{
+                width:"550px",
+                height: "594px",
+                backgroundColor: "white",
+                marginLeft: "183px",
+                marginTop: "113px",
+                borderRadius: "10px"
+            }}>
                 { this.state.truckings.map(this.eachTrucking) }
-                <button onClick={this.add}>add</button>
+                <TruckingForm formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
 
             </div>
         )

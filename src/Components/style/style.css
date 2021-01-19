@@ -9,7 +9,7 @@
     flex-flow: row nowrap;
     width: 1258px;
     height: 800px;
-    background-image: url("scene.png");
+    background-image: url("media/scene.png");
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
@@ -21,6 +21,7 @@
     background-color: white;
     margin-left: 183px;
     margin-top:113px;
+    border-radius: 10px;
 }
 
 .trucking-form {
@@ -34,13 +35,14 @@
     margin-bottom: 14px;
     width: 400px;
     height: 60px;
-
+    border: 2px solid #EE4D47;
+    border-radius: 5px;
 }
 
 .buttton-form {
     width: 158px;
     height: 60px;
-    margin-left: 153px;
+    left: 153px;
 }
 
 ol {
@@ -55,11 +57,14 @@ ol li {
 }
 
 .delete-update {
-    width: 36px;
-    height: 36px;
+    margin-left: 58px;
+}
+
+.but {
+    left: 11px;
 }
 /* .car-pic {
-    background-image: url('truck.png');
+    background-image: url('media/truck.png');
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
