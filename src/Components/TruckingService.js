@@ -5,14 +5,15 @@ import TruckingContainer from "./TruckingContainer";
 
 class TruckingService extends Component {
 
+  constainerStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    marginLeft:"323px" ,
+    width:1285, 
+    height:800
+  }
   render() {
     return (
-      <div style={{
-        backgroundImage: `url(${backgroundImage})`,
-        marginLeft:"323px" ,
-        width:1285, 
-        height:800
-      }}>
+      <div style={this.constainerStyle}>
         <TruckingContainer/>
         <Truck/>
       </div>

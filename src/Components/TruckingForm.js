@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import { Button } from '@material-ui/core';
+import moment from "moment";
 
 class TruckingFormUpdate extends Component{
+
     constructor(props) {
         super(props)
         this.state = {
-            name: props.formInputs.name,
-            city: props.formInputs.city,
-            date: props.formInputs.date,
+            name: null,
+            city: null,
+            date: null
         }
 
-        this.inputChanged = this.inputChanged.bind(this)
+        this.isChange = this.isChange.bind(this)
         this.save = this.save.bind(this)
         this.submitBtn = this.submitBtn.bind(this)
     }
@@ -24,7 +26,8 @@ class TruckingFormUpdate extends Component{
             })
         }
     }
-    inputChanged(event) {
+
+    isChange(event) {
         event.preventDefault();
         const key = event.target.name
         const value = event.target.value
@@ -36,35 +39,50 @@ class TruckingFormUpdate extends Component{
     save(event) {
         event.preventDefault()
 
-        if (this.state.name === 'Name') {
-            alert("Please enter Name")
+        if (this.state.name === '') {
+            alert("Please add name")
             return;
         }
-        if (this.state.city === 'City') {
-            alert("Please enter City")
+        if (this.state.city === '') {
+            alert("Please add city")
             return;
         }
         if (this.state.date === '') {
-            alert("Please enter Date")
+            alert("Please add date")
             return;
         }
-
-        const newDelivery = {
+        
+        const newTrucking = {
             name: this.state.name,
             date: this.state.date,
             city: this.state.city
         }
+        
         this.setState({
-            name: 'Name',
+            name: '',
             date: '',
-            city: 'City'
+            city: ''
         })
 
         if (this.props.editing === true) {
-            this.props.onEdit(newDelivery, this.props.formInputs.id)
+            const date = moment(this.state.date);
+            if(!date.isValid()) {
+                alert("Date is invalid, please enter new one");
+                return;
+            }
+            else {
+                this.props.onEdit(newTrucking, this.props.formInputs.id);
+            }
         } else {
-            newDelivery.id = null
-            this.props.onAdd(newDelivery)
+            const date = moment(this.state.date);
+            if(!date.isValid()) {
+                alert("Date is invalid, please enter new one");
+                return;
+            }
+            else {
+                newTrucking.id = null;
+                this.props.onAdd(newTrucking);
+            }
         }
     }
 
@@ -96,16 +114,18 @@ class TruckingFormUpdate extends Component{
             return (<p>Save</p>)
     }
 
+    formStyle = {
+        position: "absolute",
+        marginLeft: "730px",
+        marginTop: "116px"
+    };
+
     render() {
         return (
-                    <div style={{
-                        position: "absolute",
-                        marginLeft: "730px",
-                        marginTop: "116px"
-                    }}>
-                    <input style={this.inputForm} type={'date'} name={'date'} placeholder={'Date'} value={this.state.date} onChange={this.inputChanged}/>
-                    <input style={this.inputForm} type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.inputChanged}/>
-                    <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.inputChanged}/>  
+                <div style={this.formStyle}>
+                    <input style={this.inputForm} type={'text'} name={'date'} placeholder={'Date'} value={this.state.date} onChange={this.isChange}/>
+                    <input style={this.inputForm} type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.isChange}/>
+                    <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.isChange}/>  
                     <Button type="submit" style={this.butttonForm} variant="contained" color="secondary" id={'submit'}  onClick={this.save}>{this.submitBtn()}</Button>
                 </div>
             )

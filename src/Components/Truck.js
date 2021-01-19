@@ -9,6 +9,7 @@ const truckStyles = {
 };
 
 const Truck = () =>{
+    
         return(
             <img src={truck} alt="Truck" style={truckStyles}/>
         );
