@@ -102,14 +102,13 @@ class TruckingList extends Component {
 
     render() {
         return(
-            <div>
+            <>
                 <div style={{
                     width: "550px",
                     height: "594px",
                     position: "absolute",
                     marginLeft: "183px",
                     top: '113px',
-                    left: '334px',
                     background:'white',
                     boxShadow: '0px 20px 40px rgba(238, 77, 71, 0.1)',
                     borderRadius: '10px'
@@ -119,10 +118,10 @@ class TruckingList extends Component {
                         { this.state.truckings.map(this.eachTrucking) }
                     </tbody>
                 </table>
-            </div>
-             
-                    <TruckingFormUpdate formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
-            </div>
+                </div>
+                <TruckingFormUpdate formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
+
+            </>
         )
     }
 }

@@ -71,16 +71,23 @@ class TruckingFormUpdate extends Component{
     butttonForm={
         width: "158px",
         height: "60px",
-        left: "153px"
+        left: "200px"
     };
     inputForm={
         display: "flex",
         flexFlow: "column",
         marginBottom: "14px",
+        marginLeft: "88px",
         width: "400px",
         height: "60px",
         border: "2px solid #EE4D47",
         borderRadius: "5px",
+        fontFamily: "Rubik, sans-serif",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: "18px",
+        lineHeight: "40px"
+        
     };
     submitBtn() {
         if (this.props.editing === true)
@@ -91,7 +98,11 @@ class TruckingFormUpdate extends Component{
 
     render() {
         return (
-                <div>
+                    <div style={{
+                        position: "absolute",
+                        marginLeft: "730px",
+                        marginTop: "116px"
+                    }}>
                     <input style={this.inputForm} type={'date'} name={'date'} placeholder={'Date'} value={this.state.date} onChange={this.inputChanged}/>
                     <input style={this.inputForm} type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.inputChanged}/>
                     <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.inputChanged}/>  
