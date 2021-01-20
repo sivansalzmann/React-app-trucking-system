@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Trucking from "./Trucking";
 import TruckingFormUpdate from "./TruckingForm";
 import Truckings from "../Data/TruckingData.json";
+import {Table, TableBody, TableCell, TableContainer} from "@material-ui/core";
 
 class TruckingList extends Component {
     constructor(props) {
@@ -90,16 +91,16 @@ class TruckingList extends Component {
     eachTrucking(item, index) {
         return (
             <Trucking key={item.id} index={index} onChange={this.fill} onDelete={this.delete}>
-                <td> {index + 1} </td>
-                <td> {item.name} </td>
-                <td> {item.city} </td>
-                <td> {item.date} </td>
+                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {index + 1} </TableCell>
+                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {item.name} </TableCell>
+                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {item.city} </TableCell>
+                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {item.date} </TableCell>
             </Trucking>
         )
     }
     
     listStyle = {
-        width: "550px",
+        width: "570px",
         height: "594px",
         position: "absolute",
         marginLeft: "183px",
@@ -110,23 +111,22 @@ class TruckingList extends Component {
     }
 
     tableStyle = {
-        marginLeft: "24px",
         marginTop: "22px",
         width: "100%"
     }
 
+
     render() {
         return(
             <>
-                <div style={this.listStyle}>
-                <table className="delivery-table" style={this.tableStyle}>
-                    <tbody>
-                        { this.state.truckings.map(this.eachTrucking) }
-                    </tbody>
-                </table>
-                </div>
+                <TableContainer  style={this.listStyle}>
+                    <Table className="truckingTable" style={this.tableStyle}>
+                        <TableBody >
+                            { this.state.truckings.map(this.eachTrucking) }
+                        </TableBody >
+                    </Table>
+                </TableContainer >
                 <TruckingFormUpdate formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
-
             </>
         )
     }

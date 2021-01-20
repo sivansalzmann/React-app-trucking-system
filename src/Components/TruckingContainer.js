@@ -2,7 +2,7 @@ import React from 'react';
 import TruckingList from "./TruckingList";
 
 
-const TruckingContainer = (props) => {
+const TruckingContainer = () => {
     return (
         <div>
             <TruckingList/>

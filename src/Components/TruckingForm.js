@@ -101,10 +101,8 @@ class TruckingFormUpdate extends Component{
         border: "2px solid #EE4D47",
         borderRadius: "5px",
         fontFamily: "Rubik, sans-serif",
-        fontStyle: "normal",
         fontWeight: "bold",
         fontSize: "18px",
-        lineHeight: "40px"
         
     };
     submitBtn() {

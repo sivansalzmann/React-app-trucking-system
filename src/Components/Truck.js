@@ -5,7 +5,9 @@ const truckStyles = {
     backgroundImage: `url${truck}`,
     top: '746px',
     position:'absolute',
-    left: '0px'
+    left: '0px',
+    width: "80%",
+    height: "auto"
 };
 
 const Truck = () =>{
