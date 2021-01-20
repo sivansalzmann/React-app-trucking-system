@@ -40,9 +40,9 @@ class TruckingList extends Component {
             editing: true,
             formInputs: {
                 id: prevState.truckings[index]["id"],
+                date: prevState.truckings[index]["date"],
                 name: prevState.truckings[index]["name"],
-                city: prevState.truckings[index]["city"],
-                date: prevState.truckings[index]["date"]
+                city: prevState.truckings[index]["city"]
             }
         }))
     }
@@ -53,9 +53,9 @@ class TruckingList extends Component {
                 truckings: prevState.truckings.map(
                     trucking => {
                         if (trucking.id === id) {
+                            trucking.date = newTrucking.date
                             trucking.name = newTrucking.name
                             trucking.city = newTrucking.city
-                            trucking.date = newTrucking.date
                         }
                         return trucking
                     }
@@ -75,8 +75,8 @@ class TruckingList extends Component {
             truckings: [
                 ...prevState.truckings, {
                     id: newTrucking.id !== null ? newTrucking.id : this.nextId(prevState.truckings),
-                    name: newTrucking.name,
                     date: newTrucking.date,
+                    name: newTrucking.name,
                     city: newTrucking.city
                 }]
         }))
@@ -91,43 +91,28 @@ class TruckingList extends Component {
     eachTrucking(item, index) {
         return (
             <Trucking key={item.id} index={index} onChange={this.fill} onDelete={this.delete}>
-                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {index + 1} </TableCell>
-                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {item.name} </TableCell>
-                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {item.city} </TableCell>
-                <TableCell style={{borderBottom: 'none', padding: '15px', fontFamily: 'Rubik, sans-serif', fontWeight: '300',fontSize: '18px'}}> {item.date} </TableCell>
+                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {index + 1} </TableCell>
+                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {item.date} </TableCell>
+                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {item.name} </TableCell>
+                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {item.city} </TableCell>
             </Trucking>
         )
     }
     
-    listStyle = {
-        width: "570px",
-        height: "594px",
-        position: "absolute",
-        marginLeft: "183px",
-        top: '113px',
-        background:'white',
-        boxShadow: '0px 20px 40px rgba(238, 77, 71, 0.1)',
-        borderRadius: '10px'
-    }
-
-    tableStyle = {
-        marginTop: "22px",
-        width: "100%"
-    }
-
-
     render() {
         return(
-            <>
-                <TableContainer  style={this.listStyle}>
-                    <Table className="truckingTable" style={this.tableStyle}>
-                        <TableBody >
+            <div className={'background'}>
+                <div className={'container'}>
+                <TableContainer className={'tableContainer'} style={{height: '80%'}}>
+                    <Table>
+                        <TableBody style={{overflow: 'scroll'}}>
                             { this.state.truckings.map(this.eachTrucking) }
                         </TableBody >
                     </Table>
                 </TableContainer >
                 <TruckingFormUpdate formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
-            </>
+                </div>
+            </div>
         )
     }
 }

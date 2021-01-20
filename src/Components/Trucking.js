@@ -14,11 +14,20 @@ const Trucking = (props) => {
     const deleteTrucking = () => {
         props.onDelete(props.index)
     }
+
+    const tableCellStyle = {
+        padding: '5%',
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        justifyContent: 'space-between',
+        borderBottom: 'none'
+    };
+
     return (
         <TableRow >
             {props.children}
-            <TableCell style={{borderBottom: 'none'}}>
-                <Fab size="small" aria-label="edit" color="secondary" onClick={editTrucking} style={{marginRight: "11px"}}>
+            <TableCell style={tableCellStyle} >
+                <Fab size="small" aria-label="edit" color="secondary" onClick={editTrucking} style={{marginRight: "11px"}} >
                     <EditIcon />
                 </Fab>
                 <Fab size="small" aria-label="delete" color="secondary" onClick={deleteTrucking}>

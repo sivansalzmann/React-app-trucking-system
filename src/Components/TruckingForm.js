@@ -87,24 +87,26 @@ class TruckingFormUpdate extends Component{
     }
 
     butttonForm={
-        width: "158px",
-        height: "60px",
-        left: "200px"
+        width: "50%",
+        height: "10%",
+        padding: "10%",
+        marginLeft: "50px",
+        marginTop: "20px"
     };
+
     inputForm={
         display: "flex",
         flexFlow: "column",
-        marginBottom: "14px",
-        marginLeft: "88px",
-        width: "400px",
-        height: "60px",
+        width: "90%",
+        height: "8%",
+        margin: "1%",
         border: "2px solid #EE4D47",
         borderRadius: "5px",
         fontFamily: "Rubik, sans-serif",
         fontWeight: "bold",
-        fontSize: "18px",
         
     };
+
     submitBtn() {
         if (this.props.editing === true)
             return (<p>Update</p>)
@@ -112,15 +114,10 @@ class TruckingFormUpdate extends Component{
             return (<p>Save</p>)
     }
 
-    formStyle = {
-        position: "absolute",
-        marginLeft: "730px",
-        marginTop: "116px"
-    };
 
     render() {
         return (
-                <div style={this.formStyle}>
+                <div className={'truckingForm'}>
                     <input style={this.inputForm} type={'text'} name={'date'} placeholder={'Date'} value={this.state.date} onChange={this.isChange}/>
                     <input style={this.inputForm} type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.isChange}/>
                     <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.isChange}/>  
