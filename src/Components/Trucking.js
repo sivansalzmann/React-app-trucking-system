@@ -16,7 +16,7 @@ const Trucking = (props) => {
     }
 
     const tableCellStyle = {
-        padding: '5%',
+        padding: '4%',
         display: 'flex',
         flexFlow: 'row nowrap',
         justifyContent: 'space-between',

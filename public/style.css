@@ -33,6 +33,7 @@
     background: white;
     border-radius: 2%;
     font-size: 10%;
+    height: 80%;
 }
 
 .truckingForm {
@@ -45,7 +46,7 @@
 
 .truck {
     display: block;
-    height: 40%;
+    height: 45%;
     width: 100%;
     background-image: url("media/truck.png");
     background-repeat: no-repeat;

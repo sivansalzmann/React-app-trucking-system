@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Trucking from "./Trucking";
 import TruckingFormUpdate from "./TruckingForm";
 import Truckings from "../Data/TruckingData.json";
+import moment from "moment";
 import {Table, TableBody, TableCell, TableContainer} from "@material-ui/core";
 
 class TruckingList extends Component {
@@ -47,12 +48,17 @@ class TruckingList extends Component {
         }))
     }
 
-    update(newTrucking, id) {
+    update(newTrucking, i) {
         this.setState(prevState => ({
                 editing: false,
                 truckings: prevState.truckings.map(
                     trucking => {
-                        if (trucking.id === id) {
+                        if (trucking.id === i) {
+                            const date = moment(trucking.date);
+                            if(!date.isValid()) {
+                                alert("Date is invalid, please enter new one");
+                                return;
+                            }
                             trucking.date = newTrucking.date
                             trucking.name = newTrucking.name
                             trucking.city = newTrucking.city
@@ -70,31 +76,37 @@ class TruckingList extends Component {
         }))
     }
 
-    add(newTrucking) {
+    add({id = null, date = null, name = null, city = null}) {
         this.setState(prevState => ({
             truckings: [
                 ...prevState.truckings, {
-                    id: newTrucking.id !== null ? newTrucking.id : this.nextId(prevState.truckings),
-                    date: newTrucking.date,
-                    name: newTrucking.name,
-                    city: newTrucking.city
+                    id: id !== null ? id : this.nextId(prevState.truckings),
+                    date: date,
+                    name: name,
+                    city: city
                 }]
         }))
     }
 
     nextId(truckings = []) {
-        let max = truckings.reduce((prev, curr) => prev.id > curr.id ? prev.id : curr.id, 0);
+        let max = truckings.reduce
+        ((prev, curr) => prev.id > curr.id ? prev.id : curr.id, 0);
         return ++max;
+    }
+    
+    tabCellStyle = {
+        borderBottom: 'none',
+        fontFamily: 'Rubik, sans-serif'
     }
 
 
-    eachTrucking(item, index) {
+    eachTrucking(item, i) {
         return (
-            <Trucking key={item.id} index={index} onChange={this.fill} onDelete={this.delete}>
-                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {index + 1} </TableCell>
-                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {item.date} </TableCell>
-                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {item.name} </TableCell>
-                <TableCell style={{borderBottom: 'none', fontFamily: 'Rubik, sans-serif'}}> {item.city} </TableCell>
+            <Trucking key={item.id} index={i} onChange={this.fill} onDelete={this.delete}>
+                <TableCell style={this.tabCellStyle}> {i + 1} </TableCell>
+                <TableCell style={this.tabCellStyle}> {item.date} </TableCell>
+                <TableCell style={this.tabCellStyle}> {item.name} </TableCell>
+                <TableCell style={this.tabCellStyle}> {item.city} </TableCell>
             </Trucking>
         )
     }
@@ -103,7 +115,7 @@ class TruckingList extends Component {
         return(
             <div className={'background'}>
                 <div className={'container'}>
-                <TableContainer className={'tableContainer'} style={{height: '80%'}}>
+                <TableContainer className={'tableContainer'}>
                     <Table>
                         <TableBody style={{overflow: 'scroll'}}>
                             { this.state.truckings.map(this.eachTrucking) }
