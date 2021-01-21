@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import backgroundImage from '../media/scene.png';
 import Truck from './Truck';
 import TruckingList from "./TruckingList";
 
