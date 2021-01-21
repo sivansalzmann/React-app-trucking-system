@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import Truck from './Truck';
 import TruckingList from "./TruckingList";
 
-class TruckingService extends Component {
+class TruckingPage extends Component {
 
   render() {
     return (
       <div>
         <TruckingList/>
-        <Truck/>
+        <div className={'truck'}></div>
       </div>
     );
   }
 }
 
-export default TruckingService;
+export default TruckingPage;

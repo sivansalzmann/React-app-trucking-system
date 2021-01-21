@@ -1,10 +1,10 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import TruckingService from "../Components/TruckingService";
+import TruckingPage from "../Components/TruckingPage";
 const ReactRouter = () => {
     return (
         <>
-            <Route exact path="/" component={TruckingService}/>
+            <Route exact path="/" component={TruckingPage}/>
         </>
     )
 }
