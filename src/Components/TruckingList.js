@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Trucking from "./Trucking";
-import TruckingFormUpdate from "./TruckingForm";
+import TruckingForm from "./TruckingForm";
 import Truckings from "../Data/TruckingData.json";
 import moment from "moment";
 import {Table, TableBody, TableCell, TableContainer} from "@material-ui/core";
@@ -122,7 +122,7 @@ class TruckingList extends Component {
                         </TableBody >
                     </Table>
                 </TableContainer >
-                <TruckingFormUpdate formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
+                <TruckingForm formInputs={this.state.formInputs} editing={this.state.editing} onAdd={this.add} onEdit={this.update}/>
                 </div>
             </div>
         )

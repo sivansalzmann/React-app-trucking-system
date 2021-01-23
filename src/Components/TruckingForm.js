@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Button } from '@material-ui/core';
 import moment from "moment";
 
-class TruckingFormUpdate extends Component{
+class TruckingForm extends Component{
 
     constructor(props) {
         super(props)
@@ -121,10 +121,10 @@ class TruckingFormUpdate extends Component{
                     <input style={this.inputForm} type={'text'} name={'date'} placeholder={'Date'} value={this.state.date} onChange={this.isChange}/>
                     <input style={this.inputForm} type={'text'} name={'name'} placeholder={'Name'} value={this.state.name} onChange={this.isChange}/>
                     <input style={this.inputForm} type={'text'} name={'city'} placeholder={'City'} value={this.state.city} onChange={this.isChange}/>  
-                    <Button type="submit" style={this.butttonForm} variant="contained" color="secondary" id={'submit'}  onClick={this.save}>{this.submitBtn()}</Button>
+                    <Button type="submit" style={this.butttonForm} variant="contained" color="secondary" id={'submit'} onClick={this.save}>{this.submitBtn()}</Button>
                 </div>
             )
         }
 }
 
-export default TruckingFormUpdate
+export default TruckingForm;

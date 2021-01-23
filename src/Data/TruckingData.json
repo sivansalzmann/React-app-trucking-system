@@ -16,42 +16,6 @@
         "date": "2021-01-01",
         "name": "John Doe",
         "city": "Jerusalem"
-    },
-    {
-        "id": 4,
-        "date": "2021-05-01",
-        "name": "John Doe",
-        "city": "Tel Aviv"
-    },
-    {
-        "id": 5,
-        "date": "2021-04-11",
-        "name": "John Doe",
-        "city": "Haifa"
-    },
-    {
-        "id": 6,
-        "date": "2021-10-01",
-        "name": "John Doe",
-        "city": "Jerusalem"
-    },
-    {
-        "id": 7,
-        "date": "2021-02-21",
-        "name": "John Doe",
-        "city": "Tel Aviv"
-    },
-    {
-        "id": 8,
-        "date": "2021-04-12",
-        "name": "John Doe",
-        "city": "Haifa"
-    },
-    {
-        "id": 9,
-        "date": "2021-10-10",
-        "name": "John Doe",
-        "city": "Jerusalem"
     }
 
 ]
