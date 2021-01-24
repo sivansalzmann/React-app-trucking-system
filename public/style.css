@@ -47,7 +47,7 @@
 .truck {
     display: block;
     height: 45%;
-    width: 100%;
+    width: 50%;
     background-image: url("media/truck.png");
     background-repeat: no-repeat;
     background-size: contain;
